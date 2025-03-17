@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 import {connection} from './database/connection.js';
 import { errorMiddleware } from './middlewares/error.js';
+import userRouter from './router/userRoutes.js';
 
 
 const app = express();
@@ -30,6 +31,7 @@ app.use(
     })
   );
 
+app.use('/api/v1/user', userRouter);
 connection();
 app.use(errorMiddleware)
 export default app;

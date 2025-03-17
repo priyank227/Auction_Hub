@@ -1,7 +1,7 @@
 import ErrorHandler from "../middlewares/error.js";
 import cloudinary from "cloudinary";
-
-export const register = catchAsyncErrors(async (req, res, next) => {
+import {User} from "../models/userSchema.js";
+export const register = async(req, res, next) => {
   if (!req.files || Object.keys(req.files).length === 0) {
     return next(new ErrorHandler("Profile Image Required.", 400));
   }
@@ -43,7 +43,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
   const isRegistered = await User.findOne({ email });
   if (isRegistered) {
     return next(new ErrorHandler("User already registered.", 400));
-  }
+  }// 
 
   const cloudinaryResponse = await cloudinary.uploader.upload(
     profileImage.tempFilePath,
@@ -85,5 +85,9 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     },
   });
 
-  generateToken(user, "User Registered.", 201, res);
-});
+//   generateToken(user, "User Registered.", 201, res);
+res.status(201).json({
+    success: true,
+    message: "User Registered.",
+  });
+};
