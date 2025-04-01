@@ -7,6 +7,7 @@ import { FaFacebook } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdCloseCircleOutline, IoIosCreate } from "react-icons/io";
+import { FaUserCircle } from "react-icons/fa";
 import { FaFileInvoiceDollar } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
