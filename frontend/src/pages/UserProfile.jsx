@@ -116,7 +116,7 @@ const UserProfile = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700">
-                        Bank Account (IFSC)
+                        Bank Account Number
                       </label>
                       <input
                         type="text"
@@ -135,19 +135,6 @@ const UserProfile = () => {
                         type="text"
                         defaultValue={
                           user.paymentMethods.bankTransfer.bankAccountName
-                        }
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                        disabled
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Paytm UPI ID
-                      </label>
-                      <input
-                        type="text"
-                        defaultValue={
-                          user.paymentMethods.paytmupiid.paytmUpiId
                         }
                         className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
                         disabled

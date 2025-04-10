@@ -13,7 +13,6 @@ const SignUp = () => {
   const [bankAccountName, setBankAccountName] = useState("");
   const [bankAccountNumber, setBankAccountNumber] = useState("");
   const [bankName, setBankName] = useState("");
-  const [paytmUpiId, setpaytmUpiId] = useState("");
   const [paypalEmail, setPaypalEmail] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [profileImagePreview, setProfileImagePreview] = useState("");
@@ -36,7 +35,6 @@ const SignUp = () => {
       (formData.append("bankAccountName", bankAccountName),
       formData.append("bankAccountNumber", bankAccountNumber),
       formData.append("bankName", bankName),
-      formData.append("paytmUpiId", paytmUpiId),
       formData.append("paypalEmail", paypalEmail));
     dispatch(register(formData));
   };
@@ -181,7 +179,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     value={bankAccountNumber}
-                    placeholder="IFSC"
+                    placeholder="Enter Bank Account Number"
                     onChange={(e) => setBankAccountNumber(e.target.value)}
                     className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
                     disabled={role === "Bidder"}
@@ -197,18 +195,6 @@ const SignUp = () => {
                 </div>
               </div>
               <div>
-                <label className="text-[16px] text-stone-600 font-semibold">
-                  Paytm And Paypal Details
-                </label>
-                <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
-                  <input
-                    type="number"
-                    value={paytmUpiId}
-                    placeholder="Paytm UPI ID"
-                    onChange={(e) => setpaytmUpiId(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
-                  />
                   <input
                     type="email"
                     value={paypalEmail}
@@ -219,7 +205,6 @@ const SignUp = () => {
                   />
                 </div>
               </div>
-            </div>
 
             <button
               className="bg-[#d6482b] w-[420px] font-semibold hover:bg-[#b8381e] transition-all duration-300 text-xl py-2 px-4 rounded-md text-white mx-auto lg:w-[640px] my-4"
