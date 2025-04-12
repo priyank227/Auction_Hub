@@ -29,88 +29,65 @@ const About = () => {
   ];
 
   return (
-    <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] gap-7 flex flex-col min-h-screen py-4 justify-center">
-        <div>
-          <h1
-            className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
-          >
-            About Us
+    <section className="w-full min-h-screen pl-[300px] pr-5 py-16 bg-gradient-to-br from-[#dbeafe] to-[#f0f9ff]">
+      <div className="max-w-6xl mx-auto flex flex-col gap-12">
+        <div className="text-center animate-fade-in-up">
+          <h1 className="text-sky-700 text-5xl md:text-6xl font-extrabold mb-4">
+            Welcome to <span className="text-sky-900">AuctionHub</span>
           </h1>
-          <p className="text-xl text-stone-600">
-            Welcome to AuctionHub, the ultimate destination for online auctions
-            and bidding excitement. Founded in 2025, we are dedicated to
-            providing a dynamic and user-friendly platform for buyers and
-            sellers to connect, explore, and transact in a secure and seamless
-            environment.
+          <p className="text-sky-800 text-lg md:text-xl font-medium max-w-3xl mx-auto">
+            Your trusted destination for seamless online auctions, where excitement meets innovation and community.
           </p>
         </div>
-        <div>
-          <h3
-            className={`text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
-          >
-            Our Mission
-          </h3>
-          <p className="text-xl text-stone-600">
-            At AuctionHub, our mission is to revolutionize the way people buy and
-            sell items online. We strive to create an engaging and trustworthy
-            marketplace that empowers individuals and businesses to discover
-            unique products, make informed decisions, and enjoy the thrill of
-            competitive bidding.
+
+        <div className="bg-white/70 backdrop-blur-lg p-8 rounded-xl shadow-2xl animate-fade-in-up">
+          <h2 className="text-3xl font-bold text-sky-700 mb-4 text-center">Our Mission</h2>
+          <p className="text-sky-800 text-lg text-center">
+            At AuctionHub, we aim to redefine the way people buy and sell online. By blending
+            technology, transparency, and trust — we create a thrilling and secure marketplace
+            for unique items and exciting bidding.
           </p>
         </div>
-        <div>
-          <h3
-            className={`text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
-          >
-            Our Values
-          </h3>
-          <ul className="list-inside">
-            {values.map((element) => {
-              return (
-                <li className="text-xl text-stone-600 mb-2" key={element.id}>
-                  <span className="text-black font-bold">{element.title}</span>:{" "}
-                  {element.description}
-                </li>
-              );
-            })}
-          </ul>
+
+        <div className="animate-fade-in-up">
+          <h2 className="text-3xl font-bold text-center text-sky-700 mb-8">Our Core Values</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((value) => (
+              <div
+                key={value.id}
+                className="p-6 rounded-xl bg-white/80 backdrop-blur-md border border-sky-100 shadow-md hover:shadow-xl transition duration-300 text-center"
+              >
+                <h3 className="text-xl font-semibold text-sky-700 mb-3">{value.title}</h3>
+                <p className="text-sky-800 text-sm">{value.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div>
-          <h3
-            className={`text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
-          >
-            Our Story
-          </h3>
-          <p className="text-xl text-stone-600">
-            Founded by Mihir & Priyank, AuctionHub was born out of a passion for
-            connecting people with unique and valuable items. With years of
-            experience in the auction industry, our team is committed to
-            creating a platform that offers an unparalleled auction experience
-            for users worldwide.
+
+        <div className="animate-fade-in-up">
+          <h2 className="text-3xl font-bold text-sky-700 text-center mb-4">Our Story</h2>
+          <p className="text-sky-800 text-lg text-center max-w-4xl mx-auto">
+            Founded by Mihir & Priyank, AuctionHub emerged from a shared dream of building a
+            trusted digital auction ecosystem. With deep roots in auctioneering and innovation,
+            we've cultivated a platform that connects global users with excitement and ease.
           </p>
         </div>
-        <div>
-          <h3
-            className={`text-[#111] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl`}
-          >
-            Join Us
-          </h3>
-          <p className="text-xl text-stone-600">
-            Whether you're looking to buy, sell, or simply explore, AuctionHub
-            invites you to join our growing community of auction enthusiasts.
-            Discover new opportunities, uncover hidden gems, and experience the
-            thrill of winning your next great find.
+
+        <div className="animate-fade-in-up">
+          <h2 className="text-3xl font-bold text-sky-700 text-center mb-4">Join Us</h2>
+          <p className="text-sky-800 text-lg text-center max-w-4xl mx-auto">
+            Whether you're hunting rare finds or showcasing your own, AuctionHub is your stage.
+            Join our vibrant community and be a part of the next generation of bidding brilliance.
           </p>
         </div>
-        <div>
-          <p className="text-[#d6482b] text-xl font-bold mb-3">
-            Thank you for choosing AuctionHub. We look forward to being a part of
-            your auction journey!
+
+        <div className="text-center mt-10 animate-fade-in-up">
+          <p className="text-sky-600 text-xl font-semibold">
+            Thank you for choosing AuctionHub — let's make your auction journey unforgettable!
           </p>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

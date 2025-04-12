@@ -57,162 +57,143 @@ const SignUp = () => {
 
   return (
     <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-center">
-        <div className="bg-white mx-auto w-full h-auto px-2 flex flex-col gap-4 items-center py-4 justify-center rounded-md">
-          <h1
-            className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
-          >
-            Register
-          </h1>
-          <form
-            className="flex flex-col gap-5 w-full"
-            onSubmit={handleRegister}
-          >
-            <p className="font-semibold text-xl md:text-2xl">
-              Personal Details
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Full Name</label>
-                <input
-                  type="text"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Email</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Phone</label>
-                <input
-                  type="number"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
-                />
-              </div>
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Address</label>
-                <input
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-4 sm:flex-row">
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Role</label>
-                <select
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
-                >
-                  <option value="">Select Role</option>
-                  <option value="Auctioneer">Auctioneer</option>
-                  <option value="Bidder">Bidder</option>
-                </select>
-              </div>
-              <div className="flex flex-col sm:flex-1">
-                <label className="text-[16px] text-stone-600">Password</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-1 gap-2">
-              <label className="text-[16px] text-stone-600">
-                Profile Image
-              </label>
-              <div className="flex items-center gap-3">
-                <img
-                  src={
-                    profileImagePreview
-                      ? profileImagePreview
-                      : "/imageHolder.jpg"
-                  }
-                  alt="profileImagePreview"
-                  className="w-14 h-14 rounded-full"
-                />
-                <input type="file" onChange={imageHandler}/>
-              </div>
-            </div>
-            <div className="flex flex-col gap-4">
-              <label className="font-semibold text-xl md:2xl flex flex-col">
-                Payment Method Details{" "}
-                <span className="text-[12px] text-stone-500">
-                  Fill Payment Details Only If you are registering as an
-                  Auctioneer
-                </span>
-              </label>
-              <div className="flex flex-col gap-2">
-                <label className="text-[16px] text-stone-500">
-                  Bank Details
-                </label>
-                <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
-                  <select
-                    value={bankName}
-                    onChange={(e) => setBankName(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
-                  >
-                    <option value="">Select Your Bank</option>
-                    <option value="HDFC">HDFC</option>
-                    <option value="SBI">SBI</option>
-                    <option value="KOTAK">KOTAK</option>
-                    <option value="BOB">BOB</option>
-                  </select>
+      <section className="w-full m-0 min-h-screen bg-gradient-to-br from-[#DBEAFE] to-[#EFF6FF] flex justify-center items-center py-10">
+        <div className="bg-white shadow-xl rounded-lg w-full max-w-3xl p-8">
+          <h1 className="text-[#1f6ea6] text-4xl font-bold text-center mb-6">Register</h1>
+          <form className="flex flex-col gap-8" onSubmit={handleRegister}>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold text-[#1f6ea6]">Personal Details</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex flex-col">
+                  <label className="text-lg text-[#4a4a4a]">Full Name</label>
                   <input
                     type="text"
-                    value={bankAccountNumber}
-                    placeholder="Enter Bank Account Number"
-                    onChange={(e) => setBankAccountNumber(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
-                  />
-                  <input
-                    type="text"
-                    value={bankAccountName}
-                    placeholder="Bank Account UserName"
-                    onChange={(e) => setBankAccountName(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                    required
                   />
                 </div>
-              </div>
-              <div>
+                <div className="flex flex-col">
+                  <label className="text-lg text-[#4a4a4a]">Email</label>
                   <input
                     type="email"
-                    value={paypalEmail}
-                    placeholder="Paypal Email"
-                    onChange={(e) => setPaypalEmail(e.target.value)}
-                    className="text-[16px] py-2 bg-transparent border-b-[1px] border-b-stone-500 focus:outline-none sm:flex-1"
-                    disabled={role === "Bidder"}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                    required
                   />
                 </div>
               </div>
-
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex flex-col">
+                  <label className="text-lg text-[#4a4a4a]">Phone</label>
+                  <input
+                    type="number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                    required
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label className="text-lg text-[#4a4a4a]">Address</label>
+                  <input
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex flex-col">
+                  <label className="text-lg text-[#4a4a4a]">Role</label>
+                  <select
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                    required
+                  >
+                    <option value="">Select Role</option>
+                    <option value="Auctioneer">Auctioneer</option>
+                    <option value="Bidder">Bidder</option>
+                  </select>
+                </div>
+                <div className="flex flex-col">
+                  <label className="text-lg text-[#4a4a4a]">Password</label>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-lg text-[#4a4a4a]">Profile Image</label>
+                <div className="flex items-center gap-4">
+                  <img
+                    src={profileImagePreview ? profileImagePreview : "/imageHolder.jpg"}
+                    alt="Profile Preview"
+                    className="w-16 h-16 rounded-full"
+                  />
+                  <input type="file" onChange={imageHandler} className="p-3 rounded-md" />
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold text-[#1f6ea6]">Payment Method Details</h2>
+              <p className="text-sm text-gray-500">
+                Fill Payment Details Only If you are registering as an Auctioneer
+              </p>
+              {role === "Auctioneer" && (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex flex-col">
+                      <label className="text-lg text-[#4a4a4a]">Bank Name</label>
+                      <select
+                        value={bankName}
+                        onChange={(e) => setBankName(e.target.value)}
+                        className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                      >
+                        <option value="">Select Your Bank</option>
+                        <option value="HDFC">HDFC</option>
+                        <option value="SBI">SBI</option>
+                        <option value="KOTAK">KOTAK</option>
+                        <option value="BOB">BOB</option>
+                      </select>
+                    </div>
+                    <div className="flex flex-col">
+                      <label className="text-lg text-[#4a4a4a]">Bank Account Number</label>
+                      <input
+                        type="text"
+                        value={bankAccountNumber}
+                        onChange={(e) => setBankAccountNumber(e.target.value)}
+                        className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="text-lg text-[#4a4a4a]">Paypal Email</label>
+                    <input
+                      type="email"
+                      value={paypalEmail}
+                      onChange={(e) => setPaypalEmail(e.target.value)}
+                      className="p-3 rounded-md border-2 border-[#1f6ea6] focus:outline-none focus:ring-2 focus:ring-[#1f6ea6] transition-all duration-300"
+                    />
+                  </div>
+                </>
+              )}
+            </div>
             <button
-              className="bg-[#d6482b] w-[420px] font-semibold hover:bg-[#b8381e] transition-all duration-300 text-xl py-2 px-4 rounded-md text-white mx-auto lg:w-[640px] my-4"
+              className="bg-[#1f6ea6] text-white font-semibold py-3 rounded-md text-xl w-full hover:bg-[#155a8a] transition-all duration-300"
               type="submit"
               disabled={loading}
             >
-              {loading && "Registering..."}
-              {!loading && "Register"}
+              {loading ? "Registering..." : "Register"}
             </button>
           </form>
         </div>
@@ -220,4 +201,5 @@ const SignUp = () => {
     </>
   );
 };
+
 export default SignUp;

@@ -6,208 +6,126 @@ import { useNavigate } from "react-router-dom";
 const UserProfile = () => {
   const { user, isAuthenticated, loading } = useSelector((state) => state.user);
   const navigateTo = useNavigate();
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigateTo("/");
     }
   }, [isAuthenticated]);
+
   return (
-    <>
-      <section className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col min-h-screen py-4 justify-start">
-        {loading ? (
-          <Spinner />
-        ) : (
-          <>
-            <div className="bg-white mx-auto w-full h-auto px-2 flex flex-col gap-4 items-center py-4 justify-center rounded-md">
-              <img
-                src={user.profileImage?.url}
-                alt="/imageHolder.jpg"
-                className="w-36 h-36 rounded-full"
-              />
+    <section className="w-full min-h-screen bg-gradient-to-br from-[#dbeafe] to-[#eff6ff] px-5 pt-20 lg:pl-[320px] flex flex-col py-4">
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="bg-white/70 backdrop-blur-md mx-auto w-full max-w-4xl rounded-2xl shadow-2xl p-8">
+          {/* Profile Image */}
+          <div className="flex justify-center mb-8">
+            <img
+              src={user.profileImage?.url}
+              alt="Profile"
+              className="w-36 h-36 rounded-full border-4 border-sky-500 shadow-md"
+            />
+          </div>
 
-              <div className="mb-6 w-full">
-                <h3 className="text-xl font-semibold mb-4">Personal Details</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Username
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue={user.userName}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                      disabled
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Email
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue={user.email}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                      disabled
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Phone
-                    </label>
-                    <input
-                      type="number"
-                      defaultValue={user.phone}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                      disabled
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Address
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue={user.address}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                      disabled
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Role
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue={user.role}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                      disabled
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">
-                      Joined On
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue={user.createdAt?.substring(0, 10)}
-                      className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                      disabled
-                    />
-                  </div>
-                </div>
-              </div>
+          {/* Welcome Message */}
+          <div className="text-center mb-10">
+            <h3 className="text-sky-800 text-4xl font-bold mb-2">Hi, {user.userName} 👋</h3>
+            <p className="text-lg text-sky-600">{user.role} Profile</p>
+          </div>
 
-              {user.role === "Auctioneer" && (
-                <div className="mb-6 w-full">
-                  <h3 className="text-xl font-semibold mb-4">
-                    Payment Details
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Bank Name
-                      </label>
-                      <input
-                        type="text"
-                        defaultValue={user.paymentMethods.bankTransfer.bankName}
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                        disabled
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Bank Account Number
-                      </label>
-                      <input
-                        type="text"
-                        defaultValue={
-                          user.paymentMethods.bankTransfer.bankAccountNumber
-                        }
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                        disabled
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        User Name On Bank Account
-                      </label>
-                      <input
-                        type="text"
-                        defaultValue={
-                          user.paymentMethods.bankTransfer.bankAccountName
-                        }
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                        disabled
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">
-                        Paypal Email
-                      </label>
-                      <input
-                        type="text"
-                        defaultValue={user.paymentMethods.paypal.paypalEmail}
-                        className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                        disabled
-                      />
-                    </div>
-                  </div>
+          {/* Personal Details */}
+          <div className="mb-10">
+            <h3 className="text-sky-700 text-2xl font-semibold mb-4 border-b border-sky-300 pb-2">Personal Details</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                { label: "Username", value: user.userName },
+                { label: "Email", value: user.email },
+                { label: "Phone", value: user.phone },
+                { label: "Address", value: user.address },
+                { label: "Role", value: user.role },
+                { label: "Joined On", value: user.createdAt?.substring(0, 10) },
+              ].map(({ label, value }, i) => (
+                <div key={i}>
+                  <label className="text-sm font-medium text-sky-700">{label}</label>
+                  <input
+                    type="text"
+                    defaultValue={value}
+                    className="w-full mt-2 p-3 bg-white border border-sky-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400"
+                    disabled
+                  />
                 </div>
-              )}
+              ))}
+            </div>
+          </div>
 
-              <div className="mb-6 w-full">
-                <h3 className="text-xl font-semibold mb-4">
-                  Other User Details
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {user.role === "Auctioneer" && (
-                    <>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                          Unpaid Commissions
-                        </label>
-                        <input
-                          type="text"
-                          defaultValue={user.unpaidCommission}
-                          className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                          disabled
-                        />
-                      </div>
-                    </>
-                  )}
-                  {user.role === "Bidder" && (
-                    <>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                          Auctions Won
-                        </label>
-                        <input
-                          type="text"
-                          defaultValue={user.auctionsWon}
-                          className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                          disabled
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700">
-                          Money Spent
-                        </label>
-                        <input
-                          type="text"
-                          defaultValue={user.moneySpent}
-                          className="w-ful mt-1 p-2 border-gray-300 rounded-md focus:outline-none"
-                          disabled
-                        />
-                      </div>
-                    </>
-                  )}
-                </div>
+          {/* Auctioneer Payment Info */}
+          {user.role === "Auctioneer" && (
+            <div className="mb-10">
+              <h3 className="text-sky-700 text-2xl font-semibold mb-4 border-b border-sky-300 pb-2">Payment Details</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  { label: "Bank Name", value: user.paymentMethods.bankTransfer.bankName },
+                  { label: "Bank Account Number", value: user.paymentMethods.bankTransfer.bankAccountNumber },
+                  { label: "Account Name", value: user.paymentMethods.bankTransfer.bankAccountName },
+                  { label: "Paypal Email", value: user.paymentMethods.paypal.paypalEmail },
+                ].map(({ label, value }, i) => (
+                  <div key={i}>
+                    <label className="text-sm font-medium text-sky-700">{label}</label>
+                    <input
+                      type="text"
+                      defaultValue={value}
+                      className="w-full mt-2 p-3 bg-white border border-sky-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400"
+                      disabled
+                    />
+                  </div>
+                ))}
               </div>
             </div>
-          </>
-        )}
-      </section>
-    </>
+          )}
+
+          {/* Other Details */}
+          <div>
+            <h3 className="text-sky-700 text-2xl font-semibold mb-4 border-b border-sky-300 pb-2">Other User Details</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {user.role === "Auctioneer" && (
+                <div>
+                  <label className="text-sm font-medium text-sky-700">Unpaid Commissions</label>
+                  <input
+                    type="text"
+                    defaultValue={user.unpaidCommission}
+                    className="w-full mt-2 p-3 bg-white border border-sky-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400"
+                    disabled
+                  />
+                </div>
+              )}
+              {user.role === "Bidder" && (
+                <>
+                  <div>
+                    <label className="text-sm font-medium text-sky-700">Auctions Won</label>
+                    <input
+                      type="text"
+                      defaultValue={user.auctionsWon}
+                      className="w-full mt-2 p-3 bg-white border border-sky-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400"
+                      disabled
+                    />
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-sky-700">Money Spent</label>
+                    <input
+                      type="text"
+                      defaultValue={user.moneySpent}
+                      className="w-full mt-2 p-3 bg-white border border-sky-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400"
+                      disabled
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
   );
 };
 

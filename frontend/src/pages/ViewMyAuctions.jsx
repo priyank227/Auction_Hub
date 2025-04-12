@@ -17,48 +17,50 @@ const ViewMyAuctions = () => {
       navigateTo("/");
     }
     dispatch(getMyAuctionItems());
-  }, [dispatch, isAuthenticated]);
+  }, [dispatch, isAuthenticated, user.role, navigateTo]);
 
   return (
-    <>
-      <div className="w-full ml-0 m-0 h-fit px-5 pt-20 lg:pl-[320px] flex flex-col">
-        <h1
-          className={`text-[#d6482b] text-2xl font-bold mb-2 min-[480px]:text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl`}
-        >
+    <div className="w-full min-h-screen px-4 py-20 lg:pl-[320px] bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="max-w-screen-2xl mx-auto">
+        <h1 className="text-indigo-600 text-4xl md:text-5xl lg:text-6xl font-extrabold text-center mb-12 tracking-tight">
           My Auctions
         </h1>
+
         {loading ? (
-          <Spinner />
+          <div className="flex justify-center items-center py-20">
+            <Spinner />
+          </div>
         ) : (
           <div
-            className={`${
-              myAuctions.length > 2 && "flex-grow"
-            } flex flex-wrap gap-6`}
+            className={`grid gap-6 ${
+              myAuctions.length > 0
+                ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                : "grid-cols-1"
+            }`}
           >
             {myAuctions.length > 0 ? (
-              myAuctions.map((element) => {
-                return (
-                  <CardTwo
-                    title={element.title}
-                    startingBid={element.startingBid}
-                    endTime={element.endTime}
-                    startTime={element.startTime}
-                    imgSrc={element.image?.url}
-                    id={element._id}
-                    key={element._id}
-                  />
-                );
-              })
+              myAuctions.map((element) => (
+                <CardTwo
+                  key={element._id}
+                  title={element.title}
+                  startingBid={element.startingBid}
+                  endTime={element.endTime}
+                  startTime={element.startTime}
+                  imgSrc={element.image?.url}
+                  id={element._id}
+                />
+              ))
             ) : (
-              <h3 className="text-[#666] text-xl font-semibold mb-2 min-[480px]:text-xl md:text-2xl lg:text-3xl mt-5">
-                You have not posted any auction.
-              </h3>
-            )}{" "}
-            :
+              <div className="col-span-full text-center mt-12">
+                <h3 className="text-gray-500 text-xl lg:text-2xl font-medium">
+                  You haven’t posted any auctions yet.
+                </h3>
+              </div>
+            )}
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

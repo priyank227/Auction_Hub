@@ -46,7 +46,7 @@ const Card = ({ imgSrc, title, startingBid, startTime, endTime, id }) => {
     <>
       <Link
         to={`/auction/item/${id}`}
-        className="flex-grow basis-full bg-white rounded-md group sm:basis-56 lg:basis-60 2xl:basis-80"
+        className="flex-grow basis-full bg-white rounded-md group sm:basis-56 lg:basis-60 2xl:basis-80 shadow-lg hover:shadow-xl transition-shadow duration-300"
       >
         <img
           src={imgSrc}
@@ -54,25 +54,25 @@ const Card = ({ imgSrc, title, startingBid, startTime, endTime, id }) => {
           className="w-full aspect-[4/3] m-auto md:p-12"
         />
         <div className="px-2 pt-4 pb-2">
-          <h5 className="font-semibold text-[18px] group-hover:text-[#d6482b] mb-2">
+          <h5 className="font-semibold text-[18px] group-hover:text-[#4A90E2] mb-2">
             {title}
           </h5>
           {startingBid && (
-            <p className="text-stone-600 font-light">
+            <p className="text-gray-600 font-light">
               Starting Bid:{" "}
-              <span className="text-[#fdba88] font-bold ml-1">
+              <span className="text-[#4A90E2] font-bold ml-1">
                 {startingBid}
               </span>
             </p>
           )}
-          <p className="text-stone-600 font-light">
+          <p className="text-gray-600 font-light">
             {timeLeft.type}
             {Object.keys(timeLeft).length > 1 ? (
-              <span className="text-[#fdba88] font-bold ml-1">
+              <span className="text-[#4A90E2] font-bold ml-1">
                 {formatTimeLeft(timeLeft)}
               </span>
             ) : (
-              <span className="text-[#fdba88] font-bold ml-1">Time's up!</span>
+              <span className="text-[#E94E77] font-bold ml-1">Time's up!</span>
             )}
           </p>
         </div>
