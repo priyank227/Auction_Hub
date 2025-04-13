@@ -197,7 +197,7 @@ const SideDrawer = () => {
               to={"/"}
               className="font-semibold text-[#3B82F6] hover:text-[#2563EB] transition-all duration-200"
             >
-              Priyank & Mihir
+              Mihir & Priyank
             </Link>
           </p>
         </div>
