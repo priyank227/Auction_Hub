@@ -27,7 +27,7 @@ const SideDrawer = () => {
 
   return (
     <>
-      {/* Hamburger Icon for Mobile */}
+      {}
       <div
         onClick={() => setShow(!show)}
         className="fixed right-5 top-5 bg-[#1F2937] text-white text-3xl p-2 rounded-md hover:bg-[#3B82F6] lg:hidden shadow-lg"
@@ -35,7 +35,7 @@ const SideDrawer = () => {
         <GiHamburgerMenu />
       </div>
 
-      {/* Side Drawer */}
+      {}
       <div
         className={`w-full sm:w-[300px] bg-[#111827] h-full fixed top-0 left-0 z-50 transition-all duration-300 ease-in-out transform ${
           show ? "translate-x-0" : "translate-x-[-100%]"
