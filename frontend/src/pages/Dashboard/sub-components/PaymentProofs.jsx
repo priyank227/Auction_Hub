@@ -90,14 +90,30 @@ export const Drawer = ({ setOpenDrawer, openDrawer }) => {
       dispatch(updatePaymentProof(singlePaymentProof._id, status, amount));
   };
 
+  useEffect(() => {
+    if (openDrawer) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  
+    // Cleanup jab component unmount ho
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [openDrawer]);
+
   return (
       <>
           <section
-              className={`fixed ${
-                  openDrawer && singlePaymentProof.userId ? "bottom-0" : "-bottom-full"
-              }  left-0 w-full transition-all duration-300 h-full bg-[#00000087] flex items-end`}
-          >
-              <div className="bg-white h-fit transition-all duration-300 w-full">
+  className={`fixed left-0 bottom-0 w-full h-full z-50 bg-[#00000087] transition-transform duration-300 ease-in-out ${
+    openDrawer && singlePaymentProof.userId ? "translate-y-0" : "translate-y-full"
+  }`}
+>
+<div
+    onClick={(e) => e.stopPropagation()}
+    className="bg-white w-full max-h-[90vh] overflow-y-auto sm:max-w-[640px] sm:m-auto rounded-t-2xl pt-6 px-5 py-8"
+  >
                   <div className="w-full px-5 py-8 sm:max-w-[640px] sm:m-auto">
                       <h3 className="text-[#4B0082] text-3xl font-semibold text-center mb-0">
                           Update Payment Proof
